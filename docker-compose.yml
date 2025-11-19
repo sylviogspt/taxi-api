@@ -25,3 +25,12 @@ services:
       - spring.datasource.username=root
       - spring.datasource.password=password
       - spring.jpa.hibernate.ddl-auto=update
+  client-web:
+    image: php:8.2-apache
+    container_name: taxi_web_client
+    ports:
+      - "80:80"
+    volumes:
+      - ./src/main/php:/var/www/html
+    depends_on:
+      - taxi-api
